@@ -1,27 +1,27 @@
 package spaceinvaders;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+
+import spaceinvaders.AlienArmy;
 /**
  *
  */
-public class Shot implements Runnable {
-    private int shotSpeed = 8;
-
-    private int SHOT_WIDTH = 2;
-    private int SHOT_HEIGHT = 5;
-
-    private int x = 0;
-
-    private int shotHeight = 0;
-
+//
+public class Missileshot  implements Runnable
+{
+	 private int shotSpeed = 2;
+	    private int SHOT_WIDTH = 12;
+	    private int SHOT_HEIGHT = 5;
+	    private int x = 0;
+	    private int shotHeight = 0;
     boolean shotState = true;
-
     AlienArmy alienArmy = null;
 
     /**
      *
      */
-    public Shot(int xVal, int yVal, AlienArmy aa) {
+    public Missileshot(int xVal, int yVal, AlienArmy aa) {
         x = xVal;//Set the shot direction
         shotHeight = yVal;
         alienArmy = aa;
@@ -60,7 +60,7 @@ public class Shot implements Runnable {
      */
     public void drawShot(Graphics g) {
         if (shotState) {
-            g.setColor(Color.white);
+            g.setColor(Color.yellow);
         } else {
             g.setColor(Color.black);
         }

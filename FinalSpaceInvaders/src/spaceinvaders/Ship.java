@@ -21,7 +21,9 @@ public class Ship implements MouseListener, MouseMotionListener {
 
   //We are only going to allow one shot at a time
   Shot shot = null;
-
+  Missileshot missileshot = null;
+  //Mouse1 m1=null;
+ // Mouse2 m2=null;
   boolean hitState = false;
 
   /**
@@ -87,8 +89,33 @@ public class Ship implements MouseListener, MouseMotionListener {
    * Fire a shot at the aliens - mouse click
    */
   public void mouseClicked(MouseEvent me) {
-      AlienArmy army = spaceInvaders.getAlienArmy();
-      shot = new Shot(x+(int)(SHIP_WIDTH/2), heightPosition, army);
+	 //  AlienArmy army = spaceInvaders.getAlienArmy();
+	   
+	   
+	  if (me.getClickCount() == 1) {
+	   //   AlienArmy army = spaceInvaders.getAlienArmy();
+	    //  shot = new Shot(x+(int)(SHIP_WIDTH/2), heightPosition, army);  
+		
+		  
+		  ClickCommandInvoker invoker = new ClickCommandInvoker();
+		  		Mouse1 m1 = new Mouse1(spaceInvaders,x,heightPosition);
+			 			 
+			 SingleclickonCommand singlepress = new SingleclickonCommand(m1);
+			 invoker.setCommand(singlepress);
+			 shot = invoker.buttonPressed();
+		 }
+	  else if (me.getClickCount() == 2) {
+	  //
+		 // AlienArmy army = spaceInvaders.getAlienArmy();
+	  //    missileshot = new Missileshot(x+(int)(SHIP_WIDTH/2), heightPosition, army);
+		  ClickCommandInvoker invoker = new ClickCommandInvoker();
+		  		Mouse2 m2 = new Mouse2(spaceInvaders,x,heightPosition);		  		  		  
+			 			 
+			 DoubleclickonCommand doublepress = new DoubleclickonCommand(m2);
+			 invoker.setCommand(doublepress);
+			 missileshot = invoker.buttonPressed1();
+		}
+	 
   }
 
   /**
@@ -101,6 +128,10 @@ public class Ship implements MouseListener, MouseMotionListener {
       if ((shot != null) && (shot.getShotState())) {
           shot.drawShot(g);
       }
+      else if ((missileshot != null) && (missileshot.getShotState())) {
+    	  missileshot.drawShot(g);
+      }
+
   }
 
   /**

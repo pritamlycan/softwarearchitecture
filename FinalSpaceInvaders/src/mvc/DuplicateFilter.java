@@ -1,7 +1,7 @@
 package mvc;
 
 //if this filter is selected it checks if there are any duplicate 
-//characters in the password does not take into account numbers or special char
+//characters in the username does not take into account numbers or special char
 
 public class DuplicateFilter implements IFilter {
 

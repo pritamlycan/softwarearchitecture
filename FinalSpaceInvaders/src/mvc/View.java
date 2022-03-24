@@ -12,7 +12,7 @@ public class View extends JFrame{
 	private String[] order = {"1","2","3","4"};
 	private JTextField firstNumber  = new JTextField(20);
 
-	private JButton checkPassword = new JButton("Filter It");
+	private JButton checkUsername = new JButton("Filter It");
 	private JTextField passResult = new JTextField(20);
 	private JCheckBox noSpace = new JCheckBox("no spaces filter");
 	private JCheckBox noDuplicates = new JCheckBox("no duplicates filter");
@@ -41,7 +41,7 @@ public class View extends JFrame{
 		this.setSize(600, 200);
 		
 		calcPanel.add(firstNumber);
-		calcPanel.add(checkPassword);
+		calcPanel.add(checkUsername);
 		calcPanel.add(passResult);
 		filterPanel.add(noSpace);
 		filterPanel.add(noDuplicates);
@@ -91,8 +91,8 @@ public class View extends JFrame{
 	}
    
    /**
-    * returns if user wants no numbers in password
-    * @return if user wants no numbers in password
+    * returns if user wants no numbers in username
+    * @return if user wants no numbers in username
     */
    public boolean getNoNum(){
 		
@@ -101,10 +101,10 @@ public class View extends JFrame{
 	}
 	
    /**
-    * returns the users entered password
-    * @return the password the user wants filterd
+    * returns the users entered username
+    * @return the username the user wants filterd
     */
-   public String getPassword(){
+   public String getUsername(){
 	   return firstNumber.getText();
    }
 
@@ -122,7 +122,7 @@ public class View extends JFrame{
 	}
 	
 
-	public void setPasswordPassOrFail(String result){
+	public void setUsernamePassOrFail(String result){
 		passResult.setText(result);
 	}
 	
@@ -134,7 +134,7 @@ public class View extends JFrame{
 	
 	void addCalculateListener(ActionListener listenForCalcButton){
 		
-		checkPassword.addActionListener(listenForCalcButton);
+		checkUsername.addActionListener(listenForCalcButton);
 		
 	}
 	

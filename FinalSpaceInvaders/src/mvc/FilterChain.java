@@ -33,7 +33,7 @@ public class FilterChain {
          }
       
          //execute target area here
-         model.passwordPassedFilter(fer);
+         model.usernamePassedFilter(fer);
      }
 
   

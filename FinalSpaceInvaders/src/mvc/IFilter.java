@@ -1,7 +1,6 @@
 package mvc;
 
- //interface for the filters to implement
- //always program to an interface
+ //in this class we program to interface so here is our filter interfance
 
 public interface IFilter {
 

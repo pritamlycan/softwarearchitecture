@@ -24,12 +24,12 @@ public class Controller {
 			boolean _noSpaces , _noDuplicates , _noCaps, _noNum = false;
 			String[] orderHolder = new String[4];
 			int[] order =new int[4];
-			String password = "";
+			String username = "";
 			
 			try{
 				
-				//gets all the user specifications for the password filters 
-				password = theView.getPassword();
+				//gets all the user specifications for the username filters 
+				username = theView.getUsername();
 				_noSpaces = theView.getNoSpace();
 				_noDuplicates = theView.getNoDuplicates();
 				_noCaps = theView.getNoCaps();
@@ -67,17 +67,17 @@ public class Controller {
 				}
 				
 				
-				//this intercepts the password between the controller and the model
-				filterManager.filterRequest(password , countFilters);
+				//this intercepts the username between the controller and the model
+				filterManager.filterRequest(username , countFilters);
 	
-				//set the views password pass or fail for actual result
-				theView.setPasswordPassOrFail(theModel.getPassword());
+				//set the views username pass or fail for actual result
+				theView.setUsernamePassOrFail(theModel.getUsername());
 			
 			}
 
 			catch(NumberFormatException ex){
 				
-				theView.displayErrorMessage("come on now try entering a password");
+				theView.displayErrorMessage("come on now try entering a username");
 				
 			}
 			

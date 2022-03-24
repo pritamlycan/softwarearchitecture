@@ -27,7 +27,7 @@ public class Alien {
     }
 
     /**
-     * Returns whether ythe alien had been hit
+     * Returns whether the alien had been hit
      */
     public boolean hasBeenHit() {
         return hitState;

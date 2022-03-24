@@ -1,8 +1,5 @@
 package mvc;
-
-
-
- //this is the filter manager interacts with the client
+ //filter manager interacts with the client
  //depending on what the client wants then sends info to the chain
  
 public class FilterManager {

@@ -7,57 +7,56 @@ import java.awt.*;
  */
 public class AlienShot implements Runnable {
 
-
     private int shotSpeed = 10;
-
     private int SHOT_WIDTH  = 2;
     private int SHOT_HEIGHT = 5;    
-    
     private int x = 0;
-
     private int shotHeight = 0;
 
     boolean shotState = true;
 
     Ship ship = null;
+    Alien alien; // who does this shot belong to
     
     /**
      *
      */
     public AlienShot(int xVal, int yVal, Ship s) {
         x = xVal;//Set the shot direction
-	shotHeight = yVal;
-	ship = s;
-	Thread thread = new Thread(this);
-	thread.start();
+		shotHeight = yVal;
+		ship = s;
+		Thread thread = new Thread(this);
+		thread.start();
     }
 
     /**
      *
      */
-    private boolean moveShot() {
-	
-	//Now we need to see if the ship has been hit
-	if (ship.checkShot(x, shotHeight)) {
-            //We hit something!
-            System.out.println("An alien shot the ship!");
-	    ship.hitByAlien();
-	    shotState = false;
-	    return true;
-	}
-
-        shotHeight = shotHeight + 2;
-	//We could have written this as
-	//shotHeight -= 2;
-	
-	//Now check we haven't gone off the screen
-	if (shotHeight > SpaceInvaders.HEIGHT) {
-	    shotState = false;
-	    return true;
-	}
-	
+   // public Alien moveShot() {
+    public Object moveAndWhoWon() {
 		
-	return false;
+		//Now we need to see if the ship has been hit
+		if (ship.checkShot(x, shotHeight)) {
+	            //We hit something!
+	            System.out.println("An alien shot the ship!");
+		    ship.hitByAlien();
+		    shotState = false;
+		    //return true;
+		    return alien;
+		}
+	
+	        shotHeight = shotHeight + 2;
+		//We could have written this as
+		//shotHeight -= 2;
+		
+		//Now check we haven't gone off the screen
+		if (shotHeight > SpaceInvaders.HEIGHT) {
+		    shotState = false;
+		 //   return true;
+		    return alien;
+		}
+		
+		return ship;
     }
 
     /**
@@ -84,7 +83,7 @@ public class AlienShot implements Runnable {
                 //Ignore this exception
             }
 	    
-	    if (moveShot()) {
+	    if (!getShotState()) {
                 break;
 	    }
 

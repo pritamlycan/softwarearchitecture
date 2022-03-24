@@ -1,4 +1,4 @@
- package spaceinvaders;
+package spaceinvaders;
 import java.awt.*;
 /**
  * The Alien class.

@@ -24,7 +24,7 @@ public class View extends JFrame{
 	private JComboBox orderList3 = new JComboBox(order);
 	
 	
-	View(){
+	public View(){
 		
 		//set up the GUI for the user make it look pretty
 		

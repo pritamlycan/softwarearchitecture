@@ -13,6 +13,8 @@ public class Driver {
 	        Controller theController = new Controller(theView,theModel);
 	        
 	        theView.setVisible(true);
+
+			
 	        
 	    }
 }

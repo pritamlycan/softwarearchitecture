@@ -1,29 +1,32 @@
 package spaceinvaders;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Color;
 /**
  *
  */
-public class Shot implements Runnable {
-    private int shotSpeed = 8;
+public class Shot implements Runnable, Missile {
+    private int shotSpeed = 15;
 
     private int SHOT_WIDTH = 2;
     private int SHOT_HEIGHT = 5;
 
-    private int x = 0;
+    private int x;
 
-    private int shotHeight = 0;
-
+    private int shotHeight;
+    private int shotDir;
     boolean shotState = true;
 
     AlienArmy alienArmy = null;
+    Alien hitAlien;
 
     /**
      *
      */
     public Shot(int xVal, int yVal, AlienArmy aa) {
-        x = xVal;//Set the shot direction
+        x = xVal;//Set the shot position
         shotHeight = yVal;
+        shotDir = -2;
         alienArmy = aa;
         Thread thread = new Thread(this);
         thread.start();
@@ -32,19 +35,18 @@ public class Shot implements Runnable {
     /**
      *
      */
-    private boolean moveShot() {
+    public boolean moveShot() {
 
         //Now we need to see if we've hit anything!
-        if (alienArmy.checkShot(x, shotHeight)) {
+    	hitAlien = alienArmy.checkShot(x, shotHeight);
+        if (hitAlien.hasBeenHit()) {
             //We hit something!
             System.out.println("We shot an alien!");
             shotState = false;
             return true;
         }
 
-        shotHeight = shotHeight - 2;
-        //We could have written this as
-        //shotHeight -= 2;
+        shotHeight = shotHeight +shotDir;
 
         //Now check we haven't gone off the screen
         if (shotHeight < 0) {
@@ -82,21 +84,20 @@ public class Shot implements Runnable {
                 //Ignore this exception
             }
 
-            //Use this line for super bullets
-            //
-            //moveShot()
-            //
-            //or this for normal bullets
-            //
-            //if (moveShot()) {
-            // break;
-            //}
-
             if (moveShot()) {
                 break;
             }
 
         }
     }
+
+	public Alien whoWasHit() {
+			if (shotState) {
+				return null;
+			}
+			else {
+				return hitAlien;
+			}
+	}
 
 }

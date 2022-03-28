@@ -21,7 +21,7 @@ public class Ship implements MouseListener, MouseMotionListener {
 
   //We are only going to allow one shot at a time
   Shot shot = null;
-  Missileshot missileshot = null;
+  FastShot missileshot = null;
   //Mouse1 m1=null;
  // Mouse2 m2=null;
   boolean hitState = false;

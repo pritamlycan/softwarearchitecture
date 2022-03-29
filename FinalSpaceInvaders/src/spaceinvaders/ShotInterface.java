@@ -4,6 +4,6 @@ public interface ShotInterface//abstractfactoory
 {
 	
 	abstract Shot getNormalshot(String shottype);
-	abstract FastShot getMissileshot(String shottype);
+	abstract FastShot getFastShot(String shottype);
 
 }

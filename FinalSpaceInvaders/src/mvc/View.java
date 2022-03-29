@@ -27,9 +27,6 @@ public class View extends JFrame {
 		JPanel calcPanel = new JPanel();
 		JPanel filterPanel = new JPanel();
 		JPanel continueToGame = new JPanel();
-		//calcPanel.setBackground(Color.grey);
-		//filterPanel.setBackground(Color.black);
-		//continueToGame.setBackground(Color.black);
 		calcPanel.setBorder(BorderFactory.createTitledBorder("Username Check"));
 		filterPanel.setLayout(new GridLayout(4, 1));
 		filterPanel.setBorder(BorderFactory.createTitledBorder("filters"));
@@ -109,6 +106,11 @@ public class View extends JFrame {
 
 		checkUsername.addActionListener(listenForCalcButton);
 
+	}
+
+	void skipButtonPress(ActionListener listenForSkip){
+
+		toGame.addActionListener(listenForSkip);
 	}
 
 	// throw a nasty message if you try and mess with my program

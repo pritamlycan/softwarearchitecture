@@ -3,6 +3,8 @@ package mvc;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import spaceinvaders.SpaceInvaders;
 
 public class Controller {
@@ -16,6 +18,7 @@ public class Controller {
 		
 		//interacting with the view
 		this.theView.addCalculateListener(new CalculateListener());
+		this.theView.skipButtonPress(new CalculateListener());
 		
 	}
 	
@@ -78,6 +81,9 @@ public class Controller {
 				if (theModel.getUsername()== "username passed"){
 					String spaceInvader = "Welcome " + theView.getUsername();
 					SpaceInvaders invaders = new SpaceInvaders(spaceInvader);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Try a username with all capitals, less than 6 letters no numbers or spaces please");
 				}
 			
 			}

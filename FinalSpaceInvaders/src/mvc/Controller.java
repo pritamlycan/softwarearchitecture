@@ -3,6 +3,8 @@ package mvc;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import spaceinvaders.SpaceInvaders;
+
 public class Controller {
 
 	private View theView;
@@ -21,7 +23,7 @@ public class Controller {
 
 		public void actionPerformed(ActionEvent e) {
 			
-			boolean _noSpaces , _noDuplicates , _noCaps, _noNum = false;
+			boolean _noSpaces , _tooLong , _noCaps, _noNum = false;
 			String[] orderHolder = new String[4];
 			int[] order =new int[4];
 			String username = "";
@@ -31,8 +33,8 @@ public class Controller {
 				//gets all the user specifications for the username filters 
 				username = theView.getUsername();
 				_noSpaces = theView.getNoSpace();
-				_noDuplicates = theView.getNoDuplicates();
-				_noCaps = theView.getNoCaps();
+				_tooLong = theView.gettooLong();
+				_noCaps = theView.onlyCaps();
 				_noNum = theView.getNoNum();
 				orderHolder = theView.getOrder();
 				
@@ -51,8 +53,8 @@ public class Controller {
 							filterManager.setFilter(new SpaceFilter());
 							countFilters++;
 						}
-						if(_noDuplicates && order[1] == j){
-							filterManager.setFilter(new DuplicateFilter());
+						if(_tooLong && order[1] == j){
+							filterManager.setFilter(new LengthFilter());
 							countFilters++;
 						}
 						if(_noCaps && order[2] == j){
@@ -66,12 +68,17 @@ public class Controller {
 				
 				}
 				
-				
 				//this intercepts the username between the controller and the model
 				filterManager.filterRequest(username , countFilters);
-	
+
 				//set the views username pass or fail for actual result
 				theView.setUsernamePassOrFail(theModel.getUsername());
+
+				//if our critea is met, launch the game
+				if (theModel.getUsername()== "username passed"){
+					String spaceInvader = "Welcome " + theView.getUsername();
+					SpaceInvaders invaders = new SpaceInvaders(spaceInvader);
+				}
 			
 			}
 

@@ -14,7 +14,7 @@ Mouse2 m2;//reference to receiverm class
 		return null;
 	}
 	@Override
-	public Missileshot execute2() {
+	public FastShot execute2() {
 		// TODO Auto-generated method stub
 		return m2.runs();
 	}

@@ -38,8 +38,10 @@ public class Shot implements Runnable, Missile {
     public boolean moveShot() {
 
         //Now we need to see if we've hit anything!
-    	hitAlien = alienArmy.checkShot(x, shotHeight);
-        if (hitAlien.hasBeenHit()) {
+    //	hitAlien = alienArmy.checkShot(x, shotHeight);
+      //  if (hitAlien.hasBeenHit()) {
+        	if (alienArmy.checkShot(x, shotHeight)) {
+
             //We hit something!
             System.out.println("We shot an alien!");
             shotState = false;

@@ -280,7 +280,7 @@ public class AlienArmy {
 	/**
 	 * This is where the collision detection takes place
 	 */
-	public Alien checkShot(int x, int y) {
+	/*public Alien checkShot(int x, int y) {
 		for (int i = 0; i < 10; i++) {
 			if (rowOne[i].hitAlien(x, y)) {
 				spaceInvaders.hitAlienScore();
@@ -298,6 +298,33 @@ public class AlienArmy {
 		}
 		return new Alien(null, null);
 		//return false;
+	}*/
+	
+public boolean checkShot(int x, int y) {
+    	
+    	ConcreteElement1 el1 = new ConcreteElement1(spaceInvaders);
+    	ConcreteElement2 el2 = new ConcreteElement2(spaceInvaders);
+    	ConcreteElement3 el3 = new ConcreteElement3(spaceInvaders);
+    	
+    	Visitor e1 = new Concretevisitor1();
+    	Visitor e2 = new Concretevisitor2();
+    	Visitor e3 = new Concretevisitor3();
+    	
+        for (int i = 0; i < 10; i++) {
+            if (rowOne[i].hitAlien(x, y)) {
+		
+            	el1.accept(e1);
+	    }
+            if (rowTwo[i].hitAlien(x, y)) {
+		
+            	el2.accept(e2);
+	    }
+            if (rowThree[i].hitAlien(x, y)) {
+		
+            	el3.accept(e3);
+	    }	    
 	}
+	return false;
+    }
 
 }

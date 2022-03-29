@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
+import mvc.*;
 /**
  *
  */
@@ -156,8 +157,18 @@ public class SpaceInvaders extends JFrame implements Runnable {
     /**
      * This is the program entry point
      */
-    public static void main(String []args) {
-        SpaceInvaders invaders = new SpaceInvaders("Space Invaders2");
-    }
+	   public static void main(String[] args) {
+	    
+        View theView = new View();
+         
+         Model theModel = new Model();
+         
+         Controller theController = new Controller(theView,theModel);
+         
+         theView.setVisible(true);
 
+        //SpaceInvaders invaders = new SpaceInvaders("Space Invaders2");
+         
+     }
 }
+

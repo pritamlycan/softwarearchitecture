@@ -162,7 +162,7 @@ public class AlienArmy {
 		} else {
 			//We are moving left
 
-			//First step: Check if the alien furthest to the left has hit the edge
+			//First step: Check if the alien farthest to the left has hit the edge
 			for (int i = 0; i < 10; i++) {//Notice how this loop counts down
 				if (!rowOne[i].hasBeenHit()) {
 
@@ -237,15 +237,15 @@ public class AlienArmy {
 		int rnd2 = generator.nextInt(10);
 		int rnd3 = generator.nextInt(10);
 		if (!rowOne[rnd1].hasBeenHit()) {
-			AlienShot as = new AlienShot(rowOne[rnd1].getXPos()+(int)(Alien.ALIEN_WIDTH/2), rowOne[rnd1].getYPos(), ship);
+			AlienShot as = new AlienShot(rowOne[rnd1].getXPos()+(int)(Alien.ALIEN_WIDTH/2), rowOne[rnd1].getYPos(), ship,rowOne[rnd1]);
 			alienShots.addElement(as);
 		}
 		if (!rowOne[rnd2].hasBeenHit()) {	
-			AlienShot as = new AlienShot(rowTwo[rnd2].getXPos()+(int)(Alien.ALIEN_WIDTH/2), rowTwo[rnd2].getYPos(), ship);
+			AlienShot as = new AlienShot(rowTwo[rnd2].getXPos()+(int)(Alien.ALIEN_WIDTH/2), rowTwo[rnd2].getYPos(), ship, rowTwo[rnd2]);
 			alienShots.addElement(as);
 		}
 		if (!rowOne[rnd3].hasBeenHit()) {	
-			AlienShot as = new AlienShot(rowThree[rnd3].getXPos()+(int)(Alien.ALIEN_WIDTH/2), rowThree[rnd3].getYPos(), ship);
+			AlienShot as = new AlienShot(rowThree[rnd3].getXPos()+(int)(Alien.ALIEN_WIDTH/2), rowThree[rnd3].getYPos(), ship, rowThree[rnd3]);
 			alienShots.addElement(as);
 		}
 	}
@@ -285,17 +285,19 @@ public class AlienArmy {
 			if (rowOne[i].hitAlien(x, y)) {
 				spaceInvaders.hitAlienScore();
 				return rowOne[i];
-			}
+						}
 			if (rowTwo[i].hitAlien(x, y)) {
 				spaceInvaders.hitAlienScore();		    
 				return rowTwo[i];
-			}
+						}
 			if (rowThree[i].hitAlien(x, y)) {
 				spaceInvaders.hitAlienScore();		    
 				return rowThree[i];
+			//	return true;
 			}	    
 		}
 		return new Alien(null, null);
+		//return false;
 	}
 
 }

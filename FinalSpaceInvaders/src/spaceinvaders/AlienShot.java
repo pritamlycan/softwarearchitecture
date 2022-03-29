@@ -21,10 +21,11 @@ public class AlienShot implements Runnable {
     /**
      *
      */
-    public AlienShot(int xVal, int yVal, Ship s) {
+    public AlienShot(int xVal, int yVal, Ship s, Alien a) {
         x = xVal;//Set the shot direction
 		shotHeight = yVal;
 		ship = s;
+		alien = a;
 		Thread thread = new Thread(this);
 		thread.start();
     }
@@ -83,7 +84,7 @@ public class AlienShot implements Runnable {
                 //Ignore this exception
             }
 	    
-	    if (!getShotState()) {
+	    if (moveAndWhoWon().getClass().getName()=="Alien") {
                 break;
 	    }
 

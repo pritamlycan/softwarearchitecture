@@ -12,7 +12,7 @@ public class SingleclickonCommand implements ButtonClickCommand {
 		 return m1.runs();
 	}
 	@Override
-	public Missileshot execute2() {
+	public FastShot execute2() {
 		// TODO Auto-generated method stub
 		return null;
 	}

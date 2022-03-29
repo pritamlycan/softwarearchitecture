@@ -44,7 +44,7 @@ public class Mouse1 implements ShotInterface {
 
 
 	@Override
-	public Missileshot getMissileshot(String shottype) {
+	public FastShot getFastShot(String shottype) {
 		
 		return null;
 	}

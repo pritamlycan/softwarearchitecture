@@ -14,7 +14,7 @@ public class ClickCommandInvoker {
 		return cmd.execute();		
 		
 	}
-	public Missileshot buttonPressed1() {
+	public FastShot buttonPressed1() {
 	return cmd.execute2();
 	}
 }

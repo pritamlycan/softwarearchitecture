@@ -2,13 +2,11 @@ package spaceinvaders;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
-import spaceinvaders.AlienArmy;
 /**
  *
  */
 //
-public class Missileshot  implements Runnable
+public class FastShot implements Missile, Runnable
 {
 	 private int shotSpeed = 2;
 	    private int SHOT_WIDTH = 12;
@@ -16,12 +14,13 @@ public class Missileshot  implements Runnable
 	    private int x = 0;
 	    private int shotHeight = 0;
     boolean shotState = true;
-    AlienArmy alienArmy = null;
+    AlienArmy alienArmy;
+    Alien hitAlien;
 
     /**
      *
      */
-    public Missileshot(int xVal, int yVal, AlienArmy aa) {
+    public FastShot(int xVal, int yVal, AlienArmy aa) {
         x = xVal;//Set the shot direction
         shotHeight = yVal;
         alienArmy = aa;
@@ -32,10 +31,11 @@ public class Missileshot  implements Runnable
     /**
      *
      */
-    private boolean moveShot() {
+    public boolean moveShot() {
 
         //Now we need to see if we've hit anything!
-        if (alienArmy.checkShot(x, shotHeight)) {
+    	hitAlien = alienArmy.checkShot(x, shotHeight);
+        if (hitAlien.hasBeenHit()) {
             //We hit something!
             System.out.println("We shot an alien!");
             shotState = false;
@@ -98,5 +98,12 @@ public class Missileshot  implements Runnable
 
         }
     }
+
+
+	@Override
+	public Alien whoWasHit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

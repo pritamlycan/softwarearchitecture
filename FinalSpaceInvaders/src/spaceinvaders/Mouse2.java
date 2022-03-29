@@ -3,7 +3,7 @@ package spaceinvaders;
 public class Mouse2  implements ShotInterface {
 	
 	SpaceInvaders spaceInvaders = null;
-	 Missileshot missileshot = null;
+	 FastShot FastShot = null;
 	 public static int SHIP_HEIGHT = 25;
 	  public static int SHIP_WIDTH = 15;
 	  private int x = 0;
@@ -17,11 +17,11 @@ public class Mouse2  implements ShotInterface {
 	  
 	  
 	 
-	 public  Missileshot runs() {
+	 public  FastShot runs() {
 	
 	AlienArmy army = spaceInvaders.getAlienArmy();
-	missileshot = new Missileshot(x+(int)(SHIP_WIDTH/2), heightPosition, army);
-     return missileshot;
+	FastShot = new FastShot(x+(int)(SHIP_WIDTH/2), heightPosition, army);
+     return FastShot;
 	 }
 
 
@@ -35,10 +35,10 @@ public class Mouse2  implements ShotInterface {
 
 
 	@Override
-	public Missileshot getMissileshot(String shottype) {
+	public FastShot getFastShot(String shottype) {
 		AlienArmy army = spaceInvaders.getAlienArmy();
-		missileshot = new Missileshot(x+(int)(SHIP_WIDTH/2), heightPosition, army);
-	     return missileshot;
+		FastShot = new FastShot(x+(int)(SHIP_WIDTH/2), heightPosition, army);
+	     return FastShot;
 	}
 
 
@@ -46,7 +46,7 @@ public class Mouse2  implements ShotInterface {
 	//@Override
 /*	public Shot getshot(String shottype) {
 		AlienArmy army = spaceInvaders.getAlienArmy();
-	     shot = new Missileshot(x+(int)(SHIP_WIDTH/2), heightPosition, army);
+	     shot = new FastShot(x+(int)(SHIP_WIDTH/2), heightPosition, army);
 	     return shot;*/
 
 }

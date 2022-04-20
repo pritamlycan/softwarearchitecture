@@ -9,7 +9,7 @@ public class AlienShotAdapter extends AlienShot implements Missile, Runnable {
 		super(xVal, yVal, s, a);
 	}
 	
-	AlienShot as;
+	AlienShot as; 
 
 	public Supplier<Boolean> Request;
 	
@@ -22,15 +22,16 @@ public class AlienShotAdapter extends AlienShot implements Missile, Runnable {
 	//Adapter-Adaptee
 	public AlienShotAdapter(int xVal, int yVal, Ship s, Alien a, AlienShot as) {
 		super(xVal, yVal,s, a);
+		
 		this.as = as;
-	//	System.out.println("AlienShotAdapter for AlienShot was called");
+		System.out.println("AlienShotAdapter for AlienShot was called");
 		Request =  () -> (moveShot()); //can simply rewrite this later as 
 		//Request = () -> (as.moveAndWhoWon().getClass().getName()=="spaceinvaders.Alien");
 		//keeping it separate for now for easier comprehension
 	}
 	
 	public boolean moveShot() {
-	//	System.out.println("moveShot was called");
+		System.out.println("moveShot was called");
 		Object moveWinner = as.moveAndWhoWon();
 		if(moveWinner.getClass().getName()=="spaceinvaders.Alien") {
 			return true;

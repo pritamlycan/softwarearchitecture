@@ -1,15 +1,17 @@
  package spaceinvaders;
 import java.awt.*;
+
+import abstractFactory.AbstractAlien;
 /**
  * The Alien class.
  */
-public class Alien {
+public class Alien extends AbstractAlien {
 
-    public static int ALIEN_HEIGHT = 25;
-    public static int ALIEN_WIDTH = 15;
-
-    private int leftPosition = 0;
-    private int heightPosition = 0;
+//    public static int ALIEN_HEIGHT = 25;
+//    public static int ALIEN_WIDTH = 15;
+//
+//    private int leftPosition = 0;
+//    private int heightPosition = 0;
 
     private boolean hitState = false;//Whether this alien has already been shot
 

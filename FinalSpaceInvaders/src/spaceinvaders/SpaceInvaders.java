@@ -3,6 +3,11 @@ package spaceinvaders;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import abstractFactory.AbstractFactory;
+import abstractFactory.ClassicFactory;
+import activeObject.Proxy;
+
 import java.awt.image.BufferedImage;
 /**
  *
@@ -16,8 +21,11 @@ public class SpaceInvaders extends JFrame implements Runnable {
     AlienArmy army = null;
 
     Ship ship = null;
+    Proxy proxy;
 
     private boolean paused = false;
+    
+    AbstractFactory factory = new ClassicFactory(this);
 
     private int score = 0;
 
@@ -41,12 +49,15 @@ public class SpaceInvaders extends JFrame implements Runnable {
         backGroundImage = new javax.swing.ImageIcon("back3.jpg").getImage();
 
         alienImage = new javax.swing.ImageIcon("alien.jpg").getImage();
-
+        
         //Create the ship to fight off the invading army!
-        ship = new Ship(this);
-
-        //Create the alien army
+        //ship = new Ship(this);
+        ship = (Ship) factory.getShip();
+        
+        //Create the alien army + with correct factory, not implemented yet
+        //army = new AlienArmy(ship, this, alienImage, classicFac);
         army = new AlienArmy(ship, this, alienImage);
+        proxy = new Proxy();
 
         //The ship will be controlled by the mouse
         addMouseListener(ship);
@@ -121,6 +132,10 @@ public class SpaceInvaders extends JFrame implements Runnable {
     public void moveAliens() {
         army.moveArmy();
     }
+    
+    public Proxy getProxy() {
+    	return proxy;
+    }
 
     /**
      *
@@ -142,7 +157,7 @@ public class SpaceInvaders extends JFrame implements Runnable {
             }
             repaint();//Update the screen
             count ++;
-
+            System.out.println(count+ "for main thread");
         }
     }
 

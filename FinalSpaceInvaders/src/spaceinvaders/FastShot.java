@@ -6,7 +6,7 @@ import java.awt.Graphics;
  *
  */
 //
-public class FastShot implements Missile, Runnable
+public class FastShot extends AbstractMissile implements Missile, Runnable
 {
 	 private int shotSpeed = 2;
 	    private int SHOT_WIDTH = 12;

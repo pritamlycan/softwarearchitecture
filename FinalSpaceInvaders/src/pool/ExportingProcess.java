@@ -6,9 +6,6 @@ public class ExportingProcess {
             this.processNo = processNo;  
            // do some  expensive calls / tasks here in future  
            // .........  
-
-
-           
          System.out.println("Object with process no. " + processNo + " was created");  
         }  
         

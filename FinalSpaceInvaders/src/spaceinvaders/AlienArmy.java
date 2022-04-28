@@ -2,6 +2,14 @@ package spaceinvaders;
 
 import java.awt.*;
 import java.util.*;
+<<<<<<< Updated upstream
+=======
+import java.util.ArrayList;
+import java.util.List;
+import abstractFactory.AbstractFactory;
+import abstractFactory.ClassicFactory;
+import activeObject.Proxy;
+>>>>>>> Stashed changes
 
 public class AlienArmy {
 
@@ -19,8 +27,15 @@ public class AlienArmy {
 	//A container to store details of the current alien shots
 	Vector alienShots = new Vector();    
 
+<<<<<<< Updated upstream
 	private Ship ship;
 
+=======
+//-----------------poool------------
+	private List<AlienShot> bulletPool;
+//------------------------------------
+	Ship ship;
+>>>>>>> Stashed changes
 	private SpaceInvaders spaceInvaders;
 
 	Image alienImage = null;
@@ -29,6 +44,8 @@ public class AlienArmy {
 		ship = s;
 		spaceInvaders = si;
 		alienImage = ai;
+		bulletPool = new ArrayList<AlienShot>();
+
 
 		//	alienImage = new javax.swing.ImageIcon("alienFull.jpg").getImage();
 
@@ -276,6 +293,35 @@ public class AlienArmy {
 		}
 		alienShots = tmp;
 	}
+
+	//----------------------------------------pool------------------------
+   public void tick() {
+        cleanupBullets();
+    }
+
+    private void cleanupBullets() {
+        List<AlienShot> toRemove = new ArrayList<AlienShot>();
+        for(AlienShot bullet : bulletPool) {
+			
+			if(bullet.getShotState()) {
+                toRemove.add(bullet);
+            }
+        }
+        for(AlienShot bullet : toRemove) {
+            bulletPool.remove(bullet);
+        }
+    }
+
+    public List<AlienShot> getBullets() {
+        return bulletPool;
+    }
+
+    
+    //--------------------------------------------------------------------
+
+
+
+
 
 	/**
 	 * This is where the collision detection takes place

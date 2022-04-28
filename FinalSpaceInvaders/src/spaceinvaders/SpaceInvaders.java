@@ -3,14 +3,23 @@ package spaceinvaders;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+<<<<<<< Updated upstream
+=======
+import java.util.ArrayList;
+import java.util.List;
+import abstractFactory.AbstractFactory;
+import abstractFactory.ClassicFactory;
+import activeObject.Proxy;
+
+>>>>>>> Stashed changes
 import java.awt.image.BufferedImage;
 /**
  *
  */
-public class SpaceInvaders extends JFrame implements Runnable {
+public class SpaceInvaders extends JFrame  implements Runnable {
     public static int WIDTH = 600;//The width of the frame
     public static int HEIGHT = 400;//The height of the frame
-
+    
     private int gameSpeed = 100;//Try 500
 
     AlienArmy army = null;
@@ -91,8 +100,8 @@ public class SpaceInvaders extends JFrame implements Runnable {
      *
      */
     public void startGame() {
-        //These two lines may look confusing but basically they start the
-        //game process, i.e. update the display screen every 100ms.
+        //These two lines  start then game process,
+        // i.e. update the display screen every 100ms.
         Thread thread = new Thread(this);
         thread.start();
     }
@@ -152,7 +161,7 @@ public class SpaceInvaders extends JFrame implements Runnable {
     public AlienArmy getAlienArmy() {
         return army;
     }
-
+    
     /**
      * This is the program entry point
      */

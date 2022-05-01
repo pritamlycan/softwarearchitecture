@@ -2,6 +2,9 @@ package spaceinvaders;
 
 //Needed for the mouse
 import java.awt.event.*;
+
+import abstractFactory.AbstractShip;
+
 //Needed for the graphics
 import java.awt.*;
 /**
@@ -9,14 +12,13 @@ import java.awt.*;
 *
 * Notice how this class has methods equivalent to those in the Alien class.
 */
-public class Ship implements MouseListener, MouseMotionListener {
+public class Ship extends AbstractShip implements MouseListener, MouseMotionListener {
 
   public static int SHIP_HEIGHT = 25;
   public static int SHIP_WIDTH = 15;
 
   private int x = 0;
   private int heightPosition = 0;
-
   SpaceInvaders spaceInvaders = null;
 
   //We are only going to allow one shot at a time
@@ -35,6 +37,7 @@ public class Ship implements MouseListener, MouseMotionListener {
       x = (int)((SpaceInvaders.WIDTH/2)+(SHIP_WIDTH/2));
       heightPosition = SpaceInvaders.HEIGHT-SHIP_HEIGHT-20;
   }
+
 
   /**
    * We will use the mouse to fly our ship
@@ -122,7 +125,7 @@ public class Ship implements MouseListener, MouseMotionListener {
    * Draw the image of the ship
    */
   public void drawShip(Graphics g) {
-      g.setColor(Color.yellow);
+	  g.setColor(Color.yellow);  
       g.fillRect(x, heightPosition, SHIP_WIDTH, SHIP_HEIGHT);
       //If the shot is still alive, i.e. still on the screen
       if ((shot != null) && (shot.getShotState())) {

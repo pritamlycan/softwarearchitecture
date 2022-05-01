@@ -1,6 +1,10 @@
 package spaceinvaders;
 
 import java.awt.Graphics;
+
+import activeObject.Message;
+import activeObject.Proxy;
+
 import java.awt.Color;
 /**
  *
@@ -19,6 +23,7 @@ public class Shot implements Runnable, Missile {
 
     AlienArmy alienArmy;
     Alien hitAlien;
+    Proxy proxy;
 
     /**
      *
@@ -26,10 +31,13 @@ public class Shot implements Runnable, Missile {
     public Shot(int xVal, int yVal, AlienArmy aa) {
         x = xVal;//Set the shot position
         shotHeight = yVal;
+        System.out.println(yVal);
         shotDir = -2;
         alienArmy = aa;
+        proxy = aa.getProxy();
         Thread thread = new Thread(this);
         thread.start();
+   //     proxy.put(new Message(x, shotHeight, null, null, this));
     }
 
     /**
@@ -78,18 +86,21 @@ public class Shot implements Runnable, Missile {
 
     /**
      * The thread that moves the shot
+     Moved to Active Object package (servant class)
      */
+   
     public void run() {
         while(true) {
             try {
                 Thread.sleep(shotSpeed);
+                proxy.put(new Message(x, shotHeight, alienArmy.ship, null, this));
             } catch(InterruptedException ie) {
                 //Ignore this exception
             }
 
-            if (moveShot()) {
-                break;
-            }
+//            if (moveShot()) {
+//                break;
+//            }
 
         }
     }
@@ -103,4 +114,9 @@ public class Shot implements Runnable, Missile {
 			}
 	}
 
+	public Proxy getProxy() {
+		return proxy;
+	}
+
+	
 }

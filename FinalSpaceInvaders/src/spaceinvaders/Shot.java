@@ -31,7 +31,6 @@ public class Shot implements Runnable, Missile {
     public Shot(int xVal, int yVal, AlienArmy aa) {
         x = xVal;//Set the shot position
         shotHeight = yVal;
-        System.out.println(yVal);
         shotDir = -2;
         alienArmy = aa;
         proxy = aa.getProxy();
@@ -96,12 +95,17 @@ public class Shot implements Runnable, Missile {
             } catch(InterruptedException ie) {
                 //Ignore this exception
             }
+            if (!shotState) {
+				
+				break;
+			}
 
 //            if (moveShot()) {
 //                break;
 //            }
 
         }
+//        Thread.currentThread().interrupt();
     }
 
 	public Alien whoWasHit() {

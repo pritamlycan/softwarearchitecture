@@ -14,21 +14,22 @@ public class Scheduler implements Runnable {
 //!!!!!!!!!!!!!add line for new thread here!!!!!!!!!!!!!
 	
 	public Scheduler(int maxSize){
-		System.out.println("SCH making scheduler...");
+//		System.out.println("SCH making scheduler...");
 		actqueue = new ActivationQueue(maxSize);
 		//give size and high water mark?
 		Thread thread = new Thread(this);
+		thread.setName("Scheduler");
 		thread.start();
-		System.out.println("SCH made.");
+//		System.out.println("SCH made.");
 	}
 
 	public void enqueue(MethodRequest mr) {
-		System.out.println("SCH enqueue received by scheduler");
+//		System.out.println("SCH enqueue received by scheduler");
 		actqueue.enqueue(mr);
 	}
 	
-	public void run() { //run for the thread, it's a dispatcher tho
-		System.out.println("SCH running scheduler thread");
+	public void run() { //run for the thread, it's a dispatcher though
+	//	System.out.println("SCH running scheduler thread");
 		while(true) {
 			i++;
 			/*might choose not to use an iterator here like in POSA2, because 
@@ -39,16 +40,16 @@ public class Scheduler implements Runnable {
 //			System.out.println("SCH checking if it has next");
 //			System.out.println(i +"run");
 			try {
-				Thread.sleep(20);
+				Thread.sleep(30);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			while(actqueue.hasNext()) {
-				System.out.println("SCH it did");
+//				System.out.println("SCH it did");
 				MethodRequest m = actqueue.peek();
 				if(m.can_run()) {
-					System.out.println("SCH dequeuing");
+//					System.out.println("SCH dequeuing");
 					actqueue.dequeue(m);
 					m.call();
 				}

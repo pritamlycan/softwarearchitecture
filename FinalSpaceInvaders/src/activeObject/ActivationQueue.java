@@ -1,5 +1,7 @@
 package activeObject;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -21,7 +23,6 @@ public class ActivationQueue {
 		actQueue = new LinkedList<MethodRequest>(); 
 		//MethodRequest[] actQueue = new MethodRequest[HWM];  
 		itr = actQueue.iterator();
-		System.out.println("AQ act q made");
 	}
 	
 	
@@ -32,13 +33,26 @@ public class ActivationQueue {
 	
 	public void enqueue(MethodRequest metReq) {
 		// timeOut = infinite) {
+		infinite++;
+	//	System.out.println(actQueue.size());
+	//	System.out.println(infinite);
+		if(infinite>50) {
+			infinite =0;
+			actQueue = new LinkedList<MethodRequest>();
+		}
 		actQueue.add(metReq);
-		System.out.println("AQ MR enqueued");
+	//	System.out.println("AQ MR enqueued");
 	}
 	
 	public void dequeue(MethodRequest m) {
 		actQueue.remove(m);
-		System.out.println("AQ MR removed");
+//		if(infinite>20) {
+//			infinite=0;
+//			actQueue = new LinkedList<MethodRequest>();
+//		}
+		actQueue.remove(null);
+		//actQueue.removeAll(Collections.singleton(null));
+	//	System.out.println("AQ MR removed");
 	}
 	
 	public MethodRequest poper() {
@@ -50,6 +64,12 @@ public class ActivationQueue {
 	}
 	
 	public boolean hasNext() {
-		return !actQueue.isEmpty();
+		try {
+			actQueue.peek().can_run();
+			return true;
+		}
+		catch (Exception e){
+			return false;
+		}
 	}
 }

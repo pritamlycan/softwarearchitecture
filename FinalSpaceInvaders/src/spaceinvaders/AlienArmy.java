@@ -40,9 +40,9 @@ public class AlienArmy {
 
 		//	alienImage = new javax.swing.ImageIcon("alienFull.jpg").getImage();
 
-		//for now, type of factory is hard coded in. will be changed with constructor 
-		//when we set level types (boss/normal, etc) later
-		AbstractFactory classic = new ClassicFactory(si);
+		//for now, type of factory is hard coded as the same as in space invaders. should be inputted in constructor 
+		//when level types are set (boss/normal, etc) 
+		AbstractFactory classic = si.factory;
 		createArmy(classic);
 		setStartingPositions();
 	}
@@ -61,13 +61,6 @@ public class AlienArmy {
 			for (int i=0;i<10;i++) {
 				allAliens[j][i]=(Alien) factory.getAlien();
 			}
-			//			rowOne[i]=(Alien) factory.getAlien();
-			//			rowTwo[i]=(Alien) factory.getAlien();
-			//			rowThree[i]=(Alien) factory.getAlien();
-
-			//			rowOne[i] = new Alien(alienImage, spaceInvaders);
-			//			rowTwo[i] = new Alien(alienImage, spaceInvaders);
-			//			rowThree[i] = new Alien(alienImage, spaceInvaders);//Finally set the third row
 		}	
 	}
 
@@ -290,12 +283,12 @@ public class AlienArmy {
 		//		}
 		
 		//random alien firing with odds of firing set to x%
-		double odds = 4; //n out of 10 chances of it firing
+		double odds = 2; //n out of 10 chances of it firing
 		Random generator = new Random();
 		for (int j=0;j<rows;j++) {
 			int shoots = generator.nextInt(10);
-			if (shoots<odds) {
-				int alienNumb = generator.nextInt(10);
+			int alienNumb = generator.nextInt(10);
+			if (shoots<odds&&!allAliens[j][alienNumb].hasBeenHit()) {
 				AlienShot as = new AlienShot(allAliens[j][alienNumb].getXPos()+(int)(Alien.ALIEN_WIDTH/2), allAliens[j][alienNumb].getYPos()+(int)(Alien.ALIEN_HEIGHT/2), ship,allAliens[j][alienNumb]);
 				alienShots.addElement(as);
 				as.animate();

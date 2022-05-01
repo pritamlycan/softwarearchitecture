@@ -1,5 +1,7 @@
 package spaceinvaders;
 
+import scoreCounterHalfS_HalfA.AsynchronousLayer;
+
 public class ConcreteElement1 implements Element {
 	
 	SpaceInvaders spaceInvaders = null;
@@ -16,7 +18,6 @@ public class ConcreteElement1 implements Element {
 
 	@Override
 	public boolean row1() {
-		
 		spaceInvaders.hitAlienScore();
 		return true;
 	}

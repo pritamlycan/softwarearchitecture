@@ -7,6 +7,9 @@ import javax.swing.*;
 import abstractFactory.AbstractFactory;
 import abstractFactory.ClassicFactory;
 import activeObject.Proxy;
+import scoreCounterHalfS_HalfA.AsynchronousLayer;
+import scoreCounterHalfS_HalfA.SynchronousLayer;
+import scoreCounterHalfS_HalfA.Queue;
 
 import java.awt.image.BufferedImage;
 /**
@@ -24,9 +27,12 @@ public class SpaceInvaders extends JFrame implements Runnable {
     Proxy proxy;
 
     private boolean paused = false;
+    Queue q = new Queue();
+    AsynchronousLayer ascoreInfo = new AsynchronousLayer(q);   
+    SynchronousLayer scoreInfo = new SynchronousLayer(q);
     
     AbstractFactory factory = new ClassicFactory(this);
-
+    
     private int score = 0;
 
     Graphics offscreen_high;
@@ -39,6 +45,7 @@ public class SpaceInvaders extends JFrame implements Runnable {
      */
     public SpaceInvaders(String frameTitle) {
         super(frameTitle);
+                
 
     /**
      * Exit the program if the window is closed.
@@ -58,6 +65,7 @@ public class SpaceInvaders extends JFrame implements Runnable {
         //army = new AlienArmy(ship, this, alienImage, classicFac);
         army = new AlienArmy(ship, this, alienImage);
         proxy = new Proxy();
+        
 
         //The ship will be controlled by the mouse
         addMouseListener(ship);
@@ -86,8 +94,8 @@ public class SpaceInvaders extends JFrame implements Runnable {
      */
     public void hitAlienScore() {
         //Add 5 to the score
-        score += 5;
-        System.out.println("Current Score = "+score);
+    	ascoreInfo.switchFlag();
+     //   System.out.println("Current Score = "+score);
     }
 
     /**
@@ -157,7 +165,7 @@ public class SpaceInvaders extends JFrame implements Runnable {
             }
             repaint();//Update the screen
             count ++;
-            System.out.println(count+ "for main thread");
+     //       System.out.println(count+ "for main thread");
         }
     }
 
@@ -166,6 +174,10 @@ public class SpaceInvaders extends JFrame implements Runnable {
      */
     public AlienArmy getAlienArmy() {
         return army;
+    }
+    
+    public AsynchronousLayer getAsyncLayer() {
+    	return ascoreInfo;
     }
 
     /**

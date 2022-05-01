@@ -11,7 +11,7 @@ public class Put implements MethodRequest {
 	@Override
 	public boolean can_run() {
 		// TODO Auto-generated method stub
-		System.out.println("PUT can run check "+serv.isFull());
+	//	System.out.println("PUT can run check "+serv.isFull());
 		return !serv.isFull();
 	}
 
@@ -19,7 +19,7 @@ public class Put implements MethodRequest {
 	public void call() {
 		// TODO Auto-generated method stub
 		//think this is gonna call some sort of
-		System.out.println("PUT call");
+	//	System.out.println("PUT call");
 		serv.moveShot(msg);
 
 	}

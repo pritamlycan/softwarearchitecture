@@ -32,25 +32,9 @@ public class Servant {
 	Supplier<Boolean> moveShot;
 
 	public void moveShot(Message msg) {
-		System.out.println("SERV moveShot called");
 		empty=false;
 		AlienShotAdapter ada = msg.getAda();
-		System.out.println("SERV entering while");
-//		while(true) {
-//			break; //just added this line for testing remove this for actual use.
-//			try {
-//				//Thread.sleep(100); //gamespeed
-//				Thread.sleep(shotSpeed);
-//			} catch(InterruptedException ie) {
-//				//Ignore this exception
-//			}
-//			System.out.println("SERV checking if");
-//			if (ada.Request.get()) {
-//				break;
-//			}
 		ada.Request.get();
-//		}
-		System.out.println("finished loop");
 		empty=true;
 	}
 

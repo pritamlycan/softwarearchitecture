@@ -40,7 +40,7 @@ public class AlienShot implements Runnable {
 	 */
 	// public Alien moveShot() {
 	public Object moveAndWhoWon() {
-		System.out.println("AS moveAnd... called");
+//		System.out.println("AS moveAnd... called");
 		//Now we need to see if the ship has been hit
 		if (ship.checkShot(x, shotHeight)) {
 			System.out.println("An alien shot the ship!");
@@ -49,13 +49,11 @@ public class AlienShot implements Runnable {
 			//return true;
 			return alien;
 		}
-		System.out.println("AS checking to move");
+//		System.out.println("AS checking to move");
 		shotHeight = shotHeight+2;
 
 		//Now check we haven't gone off the screen
 		if (shotHeight > SpaceInvaders.HEIGHT) {
-			System.out.println(shotHeight);
-			System.out.println(SpaceInvaders.HEIGHT);
 			shotState = false;
 			//   return true;
 			return alien;
@@ -95,12 +93,12 @@ public class AlienShot implements Runnable {
 			} catch(InterruptedException ie) {
 				//Ignore this exception
 			}
-//
-//			if (moveAndWhoWon().getClass().getName()=="Alien") {
-//				break;
-//			}
-
+			
+			if (!shotState) {
+				break;
+			}
 		}
+//		Thread.currentThread().interrupt();
 	}
 
 

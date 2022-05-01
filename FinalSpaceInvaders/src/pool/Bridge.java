@@ -1,11 +1,4 @@
 package pool;
-import javax.swing.*;
-<<<<<<< Updated upstream
-
-public class Bridge{
-  Bridge() 
-  {
-=======
 import java.awt.*;
 import spaceinvaders.SpaceInvaders;
 
@@ -71,24 +64,3 @@ public class Bridge{
 
 
 
-
-
-/*
-
->>>>>>> Stashed changes
-    JFrame f = new JFrame("Add an image to JFrame");
-    ImageIcon icon = new ImageIcon("/Users/keijeff/Desktop/Virtual Studio Code/softwarearchitecture/FinalSpaceInvaders/src/spaceinvaders/bridge.jpg");
-    f.add(new JLabel(icon));
-    f.pack();
-    f.setVisible(true);
-  }
-  public static void main(String args[]) 
-  {
-    new Bridge();
-  }
-<<<<<<< Updated upstream
-}
-=======
-}
-*/
->>>>>>> Stashed changes

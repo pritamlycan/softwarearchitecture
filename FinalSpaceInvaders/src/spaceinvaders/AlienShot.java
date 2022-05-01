@@ -14,8 +14,8 @@ public class AlienShot implements Runnable {
     private int shotHeight = 0;
 
     boolean shotState = true;
-
     Ship ship = null;
+    AlienArmy alienArmy;
     Alien alien; // who does this shot belong to
     
     /**
@@ -64,6 +64,7 @@ public class AlienShot implements Runnable {
      * Draw the image of the shot
      */    
     public void drawShot(Graphics g) {
+    //for (AlienShot bullet : alienArmy.getBullets()){
 	if (shotState) {
             g.setColor(Color.green);
 	} else {
@@ -71,6 +72,7 @@ public class AlienShot implements Runnable {
 	}
         g.fillRect(x, shotHeight, SHOT_WIDTH, SHOT_HEIGHT);
     } 
+//}
 
     public boolean getShotState() {
         return shotState;

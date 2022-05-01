@@ -1,13 +1,7 @@
 package spaceinvaders;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
-import abstractFactory.AbstractFactory;
-import abstractFactory.ClassicFactory;
-import activeObject.Proxy;
 
 import java.awt.image.BufferedImage;
 /**

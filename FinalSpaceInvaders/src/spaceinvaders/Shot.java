@@ -17,7 +17,7 @@ public class Shot implements Runnable, Missile {
     private int shotDir;
     boolean shotState = true;
 
-    AlienArmy alienArmy = null;
+    AlienArmy alienArmy;
     Alien hitAlien;
 
     /**
@@ -63,12 +63,13 @@ public class Shot implements Runnable, Missile {
      * Draw the image of the shot
      */
     public void drawShot(Graphics g) {
-        if (shotState) {
-            g.setColor(Color.white);
-        } else {
-            g.setColor(Color.black);
-        }
-        g.fillRect(x, shotHeight, SHOT_WIDTH, SHOT_HEIGHT);
+        
+            if (shotState) {
+                g.setColor(Color.white);
+            } else {
+                g.setColor(Color.black);
+            }
+            g.fillRect(x, shotHeight, SHOT_WIDTH, SHOT_HEIGHT);
     }
 
     public boolean getShotState() {

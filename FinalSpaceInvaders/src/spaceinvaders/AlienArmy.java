@@ -4,9 +4,6 @@ import java.awt.*;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
-import abstractFactory.AbstractFactory;
-import abstractFactory.ClassicFactory;
-import activeObject.Proxy;
 
 public class AlienArmy {
 

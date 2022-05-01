@@ -1,31 +1,23 @@
 package spaceinvaders;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-
-import abstractFactory.AbstractFactory;
-import abstractFactory.ClassicFactory;
-import activeObject.Proxy;
 
 import java.awt.image.BufferedImage;
 /**
  *
  */
-public class SpaceInvaders extends JFrame implements Runnable {
+public class SpaceInvaders extends JFrame  implements Runnable {
     public static int WIDTH = 600;//The width of the frame
     public static int HEIGHT = 400;//The height of the frame
-
+    
     private int gameSpeed = 100;//Try 500
 
     AlienArmy army = null;
 
     Ship ship = null;
-    Proxy proxy;
 
     private boolean paused = false;
-    
-    AbstractFactory factory = new ClassicFactory(this);
 
     private int score = 0;
 
@@ -49,15 +41,12 @@ public class SpaceInvaders extends JFrame implements Runnable {
         backGroundImage = new javax.swing.ImageIcon("back3.jpg").getImage();
 
         alienImage = new javax.swing.ImageIcon("alien.jpg").getImage();
-        
+
         //Create the ship to fight off the invading army!
-        //ship = new Ship(this);
-        ship = (Ship) factory.getShip();
-        
-        //Create the alien army + with correct factory, not implemented yet
-        //army = new AlienArmy(ship, this, alienImage, classicFac);
+        ship = new Ship(this);
+
+        //Create the alien army
         army = new AlienArmy(ship, this, alienImage);
-        proxy = new Proxy();
 
         //The ship will be controlled by the mouse
         addMouseListener(ship);
@@ -102,8 +91,8 @@ public class SpaceInvaders extends JFrame implements Runnable {
      *
      */
     public void startGame() {
-        //These two lines may look confusing but basically they start the
-        //game process, i.e. update the display screen every 100ms.
+        //These two lines  start then game process,
+        // i.e. update the display screen every 100ms.
         Thread thread = new Thread(this);
         thread.start();
     }
@@ -132,10 +121,6 @@ public class SpaceInvaders extends JFrame implements Runnable {
     public void moveAliens() {
         army.moveArmy();
     }
-    
-    public Proxy getProxy() {
-    	return proxy;
-    }
 
     /**
      *
@@ -157,7 +142,7 @@ public class SpaceInvaders extends JFrame implements Runnable {
             }
             repaint();//Update the screen
             count ++;
-            System.out.println(count+ "for main thread");
+
         }
     }
 
@@ -167,7 +152,7 @@ public class SpaceInvaders extends JFrame implements Runnable {
     public AlienArmy getAlienArmy() {
         return army;
     }
-
+    
     /**
      * This is the program entry point
      */

@@ -84,11 +84,11 @@ public class FastShot extends AbstractMissile implements Missile, Runnable
                 //Ignore this exception
             }
 
-            //Use this line for super bullets
+            //Use this line for super AlienShots
             //
             //moveShot()
             //
-            //or this for normal bullets
+            //or this for normal AlienShots
             //
             //if (moveShot()) {
             // break;

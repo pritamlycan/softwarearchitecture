@@ -3,15 +3,12 @@ package spaceinvaders;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-<<<<<<< Updated upstream
-=======
 import java.util.ArrayList;
 import java.util.List;
 import abstractFactory.AbstractFactory;
 import abstractFactory.ClassicFactory;
 import activeObject.Proxy;
 
->>>>>>> Stashed changes
 import java.awt.image.BufferedImage;
 /**
  *

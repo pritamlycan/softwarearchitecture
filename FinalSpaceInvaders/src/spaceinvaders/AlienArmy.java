@@ -2,14 +2,11 @@ package spaceinvaders;
 
 import java.awt.*;
 import java.util.*;
-<<<<<<< Updated upstream
-=======
 import java.util.ArrayList;
 import java.util.List;
 import abstractFactory.AbstractFactory;
 import abstractFactory.ClassicFactory;
 import activeObject.Proxy;
->>>>>>> Stashed changes
 
 public class AlienArmy {
 
@@ -27,15 +24,10 @@ public class AlienArmy {
 	//A container to store details of the current alien shots
 	Vector alienShots = new Vector();    
 
-<<<<<<< Updated upstream
-	private Ship ship;
-
-=======
 //-----------------poool------------
 	private List<AlienShot> bulletPool;
 //------------------------------------
 	Ship ship;
->>>>>>> Stashed changes
 	private SpaceInvaders spaceInvaders;
 
 	Image alienImage = null;

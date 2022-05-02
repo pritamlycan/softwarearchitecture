@@ -21,7 +21,7 @@ public class Shot implements Runnable, Missile {
     private int shotDir;
     boolean shotState = true;
 
-    AlienArmy alienArmy;
+    AlienArmy alienArmy = null;
     Alien hitAlien;
     Proxy proxy;
 
@@ -31,7 +31,6 @@ public class Shot implements Runnable, Missile {
     public Shot(int xVal, int yVal, AlienArmy aa) {
         x = xVal;//Set the shot position
         shotHeight = yVal;
-        System.out.println(yVal);
         shotDir = -2;
         alienArmy = aa;
         proxy = aa.getProxy();
@@ -71,13 +70,12 @@ public class Shot implements Runnable, Missile {
      * Draw the image of the shot
      */
     public void drawShot(Graphics g) {
-        
-            if (shotState) {
-                g.setColor(Color.white);
-            } else {
-                g.setColor(Color.black);
-            }
-            g.fillRect(x, shotHeight, SHOT_WIDTH, SHOT_HEIGHT);
+        if (shotState) {
+            g.setColor(Color.white);
+        } else {
+            g.setColor(Color.black);
+        }
+        g.fillRect(x, shotHeight, SHOT_WIDTH, SHOT_HEIGHT);
     }
 
     public boolean getShotState() {
@@ -97,12 +95,17 @@ public class Shot implements Runnable, Missile {
             } catch(InterruptedException ie) {
                 //Ignore this exception
             }
+            if (!shotState) {
+				
+				break;
+			}
 
 //            if (moveShot()) {
 //                break;
 //            }
 
         }
+//        Thread.currentThread().interrupt();
     }
 
 	public Alien whoWasHit() {
